@@ -53,6 +53,7 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="{{ asset('assets/css/fonts/fonts.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/css/pnotify.custom.min.css')}}" media="all" rel="stylesheet" type="text/css" />
+  <link href="{{ asset('assets/css/custom.css') }}" rel="stylesheet"/>
   @yield("extra_css")
   <script>
   window.Laravel = {!! json_encode([
@@ -672,12 +673,12 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="{{ route('income.index')}}" class="nav-link @if((Request::is('admin/income'))|| (Request::is('admin/income_records'))) active @endif">
                   <i class="fa fa-newspaper-o nav-icon"></i>
                   <p>@lang('fleet.manage_income')</p>
                 </a>
-              </li>
+              </li> -->
               <li class="nav-item">
                 <a href="{{ route('expense.index')}}" class="nav-link @if((Request::is('admin/expense')) || (Request::is('admin/expense_records'))) active @endif">
                   <i class="fa fa-newspaper-o nav-icon"></i>
@@ -687,7 +688,7 @@
             </ul>
           </li> @endcan
 
-            @if((Request::is('admin/transactions*'))  || (Request::is('admin/bookings*'))  || (Request::is('admin/bookings_calendar')) || (Request::is('admin/booking-quotation*')))
+           @if((Request::is('admin/transactions*'))  || (Request::is('admin/bookings*'))  || (Request::is('admin/bookings_calendar')) || (Request::is('admin/booking-quotation*')))
             @php($class="menu-open")
             @php($active="active")
 
@@ -696,7 +697,7 @@
             @php($active="")
 
             @endif
-            @canany(['Bookings list','Bookings add','BookingQuotations list'])
+             @canany(['Bookings list','Bookings add','BookingQuotations list'])
           <li class="nav-item has-treeview {{$class}}">
             <a href="#" class="nav-link {{$active}}">
               <i class="nav-icon fa fa-address-card"></i>
@@ -772,24 +773,24 @@
             </a>
             <ul class="nav nav-treeview">
               
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="{{ url('admin/reports/income') }}" class="nav-link @if(Request::is('admin/reports/income')) active @endif">
                   <i class="fa fa-credit-card nav-icon"></i>
                   <p> @lang('fleet.income') @lang('fleet.report')</p>
                 </a>
-              </li>
+              </li> -->
               <li class="nav-item">
                 <a href="{{ url('admin/reports/expense') }}" class="nav-link @if(Request::is('admin/reports/expense')) active @endif">
                   <i class="fa fa-money nav-icon"></i>
                   <p> @lang('fleet.expense') @lang('fleet.report')</p>
                 </a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="{{ route('reports.delinquent') }}" class="nav-link @if(Request::is('admin/reports/delinquent')) active @endif">
                   <i class="fa fa-file-text nav-icon"></i>
                   <p> @lang('menu.deliquentReport')</p>
                 </a>
-              </li>
+              </li> -->
               <li class="nav-item">
                 <a href="{{ route('reports.monthly') }}" class="nav-link @if(Request::is('admin/reports/monthly')) active @endif">
                   <i class="fa fa-calendar nav-icon"></i>
@@ -797,19 +798,19 @@
                 </a>
               </li>
               
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="{{ route('reports.booking') }}" class="nav-link @if(Request::is('admin/reports/booking')) active @endif">
                   <i class="fa fa-book nav-icon"></i>
                   <p>@lang('menu.bookingReport')</p>
                 </a>
-              </li>
+              </li> -->
               
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="{{ route('reports.users') }}" class="nav-link @if(Request::is('admin/reports/users')) active @endif">
                   <i class="fa fa-address-book nav-icon"></i>
                   <p>@lang('fleet.user_report')</p>
                 </a>
-              </li>
+              </li> -->
               
               
               <li class="nav-item">
@@ -834,12 +835,12 @@
                   <p>@lang('fleet.driverReport')</p>
                 </a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="{{ route('reports.customers') }}" class="nav-link @if(Request::is('admin/reports/customers')) active @endif">
                   <i class="fa fa-users nav-icon"></i>
                   <p>@lang('fleet.customerReport')</p>
                 </a>
-              </li>
+              </li> -->
               
               <li class="nav-item">
                 <a href="{{ route('reports.vendors') }}" class="nav-link @if(Request::is('admin/reports/vendors')) active @endif">

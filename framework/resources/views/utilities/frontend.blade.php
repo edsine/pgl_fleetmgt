@@ -11,7 +11,7 @@
 
   .custom .nav-link.active {
 
-      background-color: #21bc6c !important;
+      background-color: #4e7e8f !important;
   }
 
   /* The switch - the box around the slider */

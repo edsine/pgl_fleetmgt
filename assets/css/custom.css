@@ -1,0 +1,7 @@
+.sidebar ::-webkit-scrollbar {
+    display: none;
+}
+
+.wrapper ::-webkit-scrollbar {
+    display: none;
+}

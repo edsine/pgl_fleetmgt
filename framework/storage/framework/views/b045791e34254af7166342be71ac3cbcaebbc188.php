@@ -10,7 +10,7 @@
       <div class="card-body">
         <div class="row">
          
-          <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('Users list')): ?>
+          <!-- <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('Users list')): ?>
           <div class="col-lg-4 col-xs-6">
             <div class="info-box">
               <span class="info-box-icon bg-info"><i class="fa fa-users"></i></span>
@@ -21,7 +21,7 @@
               </div>
             </div>
           </div>
-          <?php endif; ?> 
+          <?php endif; ?>  -->
 
           <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('Drivers list')): ?>
           <div class="col-lg-4 col-xs-6">
@@ -36,7 +36,7 @@
           </div>
           <?php endif; ?>
          
-          <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('Bookings list')): ?>
+          <!-- <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('Bookings list')): ?>
           <div class="col-lg-4 col-xs-6">
             <div class="info-box">
               <span class="info-box-icon bg-danger"><i class="fa fa-book"></i></span>
@@ -46,7 +46,7 @@
               </div>
             </div>
           </div>
-         <?php endif; ?> 
+         <?php endif; ?>  -->
 
          <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('Vehicles list')): ?>
           <div class="col-lg-4 col-xs-6">
@@ -61,7 +61,7 @@
           <?php endif; ?> 
 
           <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('Transactions list')): ?>
-          <div class="col-lg-4 col-xs-6">
+          <!-- <div class="col-lg-4 col-xs-6">
             <div class="info-box">
               <span class="info-box-icon bg-success"><i class="fa fa-money"></i></span>
               <div class="info-box-content">
@@ -69,7 +69,7 @@
                 <span class="info-box-number"><small><?php echo e(Hyvikk::get("currency")); ?></small> <?php echo e($income); ?></span>
               </div>
             </div>
-          </div>
+          </div> -->
           <div class="col-lg-4  col-xs-6">
             <div class="info-box">
               <span class="info-box-icon bg-danger"><i class="fa fa-credit-card"></i></span>
@@ -81,7 +81,7 @@
           </div>
          <?php endif; ?> 
 
-         <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('Customer list')): ?>
+         <!-- <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('Customer list')): ?>
           <div class="col-lg-4  col-xs-6">
             <div class="info-box">
               <span class="info-box-icon bg-info"><i class="fa fa-address-card"></i></span>
@@ -91,7 +91,7 @@
               </div>
             </div>
           </div>
-          <?php endif; ?> 
+          <?php endif; ?>  -->
 
           <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('Vendors list')): ?>
           <div class="col-lg-4  col-xs-6">
@@ -127,19 +127,19 @@
       </div>
       <div class="card-body">
         <div class="row">
-          <div class="col-md-6">
+          <!-- <div class="col-md-6">
             <div class="card card-info">
               <div class="card-header"> <h5> <?php echo app('translator')->get('fleet.income'); ?> - <?php echo app('translator')->get('fleet.expense'); ?> </h5></div>
               <div class="card-body">
                 <canvas id="canvas" width="400" height="400"></canvas>
               </div>
             </div>
-          </div>
-          <div class="col-md-6">
+          </div> -->
+          <div class="col-md-12">
             <div class="card card-info">
               <div class="card-header"> <h5> <?php echo app('translator')->get('fleet.vehicle'); ?>  <?php echo app('translator')->get('fleet.expenses'); ?> </h5></div>
               <div class="card-body">
-                <canvas id="canvas2" width="400" height="400"></canvas>
+                <canvas id="canvas2" width="400" height="130"></canvas>
               </div>
             </div>
           </div>
@@ -227,15 +227,15 @@ function random_color(i){
 }
 
         var chartData = {
-            labels: ["<?php echo app('translator')->get('fleet.income'); ?>", "<?php echo app('translator')->get('fleet.expense'); ?>"],
+            labels: ["<?php echo app('translator')->get('fleet.expense'); ?>"],
 
             datasets: [{
-                type: 'pie',
+                type: 'line',
                 label: '',
                backgroundColor: ['#21bc6c','#ff5462'],
                 borderColor: window.chartColors.red,
                 borderWidth: 1,
-                data: [<?php echo e($income); ?>,<?php echo e($expense); ?>]
+                data: [<?php echo e($expense); ?>]
             }]
         };
 
@@ -250,13 +250,7 @@ function random_color(i){
                     borderColor: '#ff5462',
                     data: [<?php echo e($yearly_expense); ?>],
                     fill: false,
-                }, {
-                    label: "<?php echo app('translator')->get('fleet.income'); ?>",
-                    fill: false,
-                    backgroundColor: '#21bc6c',
-                    borderColor: '#21bc6c',
-                    data: [<?php echo e($yearly_income); ?>],
-                }]
+                },]
             },
             options: {
                 responsive: true,
@@ -303,13 +297,7 @@ function random_color(i){
                     borderColor: '#ff5462',
                     data: [<?php echo e($expenses1); ?>],
                     fill: false,
-                }, {
-                    label: "<?php echo app('translator')->get('fleet.income'); ?>",
-                    fill: false,
-                    backgroundColor: '#21bc6c',
-                    borderColor: '#21bc6c',
-                    data: [<?php echo e($incomes); ?>],
-                }]
+                },]
             },
             options: {
                 responsive: true,
@@ -345,27 +333,30 @@ function random_color(i){
 
         window.onload = function() {
           var ctx = document.getElementById("yearly").getContext("2d");
-            window.myLine = new Chart(ctx, config);
-            var ctx = document.getElementById("canvas").getContext("2d");
-            var datewise = document.getElementById("datewise").getContext("2d");
-            window.myLine = new Chart(datewise, datewise_config);
-            window.myMixedChart = new Chart(ctx, {
-                type: 'pie',
-                data: chartData,
-                options: {
-                  legend:{display:false},
-                    responsive: true,
+          window.myLine = new Chart(ctx, config);
 
-                    tooltips: {
-                        mode: 'index',
-                        intersect: false
-                    }
-                }
-            });
+
+          var datewise = document.getElementById("datewise").getContext("2d");
+          window.myLine = new Chart(datewise, datewise_config);
+
+
+            // window.myMixedChart = new Chart(ctx, {
+            //     type: 'bar',
+            //     data: chartData,
+            //     options: {
+            //       legend:{display:false},
+            //         responsive: true,
+
+            //         tooltips: {
+            //             mode: 'index',
+            //             intersect: false
+            //         }
+            //     }
+            // });
 
             var ctx = document.getElementById("canvas2").getContext("2d");
             window.myMixedChart = new Chart(ctx, {
-                type: 'pie',
+                type: 'bar',
                 data: chartData3,
                 options: {
 
@@ -387,7 +378,7 @@ function random_color(i){
             var chartData3 = {
             labels: [<?php $__currentLoopData = $expenses; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $exp): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?> "<?php echo e($vehicle_name[$exp->vehicle_id]); ?>", <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>],
             datasets: [{
-                type: 'pie',
+                type: 'bar',
                 label: '',
                 backgroundColor: random_color(<?php echo e(count($expenses)); ?>),
                 borderColor: window.chartColors.black,

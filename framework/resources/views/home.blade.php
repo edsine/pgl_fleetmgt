@@ -12,7 +12,7 @@
       <div class="card-body">
         <div class="row">
          
-          @can('Users list')
+          <!-- @can('Users list')
           <div class="col-lg-4 col-xs-6">
             <div class="info-box">
               <span class="info-box-icon bg-info"><i class="fa fa-users"></i></span>
@@ -23,7 +23,7 @@
               </div>
             </div>
           </div>
-          @endcan 
+          @endcan  -->
 
           @can('Drivers list')
           <div class="col-lg-4 col-xs-6">
@@ -38,7 +38,7 @@
           </div>
           @endcan
          
-          @can('Bookings list')
+          <!-- @can('Bookings list')
           <div class="col-lg-4 col-xs-6">
             <div class="info-box">
               <span class="info-box-icon bg-danger"><i class="fa fa-book"></i></span>
@@ -48,7 +48,7 @@
               </div>
             </div>
           </div>
-         @endcan 
+         @endcan  -->
 
          @can('Vehicles list')
           <div class="col-lg-4 col-xs-6">
@@ -63,7 +63,7 @@
           @endcan 
 
           @can('Transactions list')
-          <div class="col-lg-4 col-xs-6">
+          <!-- <div class="col-lg-4 col-xs-6">
             <div class="info-box">
               <span class="info-box-icon bg-success"><i class="fa fa-money"></i></span>
               <div class="info-box-content">
@@ -71,7 +71,7 @@
                 <span class="info-box-number"><small>{{ Hyvikk::get("currency")}}</small> {{$income}}</span>
               </div>
             </div>
-          </div>
+          </div> -->
           <div class="col-lg-4  col-xs-6">
             <div class="info-box">
               <span class="info-box-icon bg-danger"><i class="fa fa-credit-card"></i></span>
@@ -83,7 +83,7 @@
           </div>
          @endcan 
 
-         @can('Customer list')
+         <!-- @can('Customer list')
           <div class="col-lg-4  col-xs-6">
             <div class="info-box">
               <span class="info-box-icon bg-info"><i class="fa fa-address-card"></i></span>
@@ -93,7 +93,7 @@
               </div>
             </div>
           </div>
-          @endcan 
+          @endcan  -->
 
           @can('Vendors list')
           <div class="col-lg-4  col-xs-6">
@@ -129,19 +129,19 @@
       </div>
       <div class="card-body">
         <div class="row">
-          <div class="col-md-6">
+          <!-- <div class="col-md-6">
             <div class="card card-info">
               <div class="card-header"> <h5> @lang('fleet.income') - @lang('fleet.expense') </h5></div>
               <div class="card-body">
                 <canvas id="canvas" width="400" height="400"></canvas>
               </div>
             </div>
-          </div>
-          <div class="col-md-6">
+          </div> -->
+          <div class="col-md-12">
             <div class="card card-info">
               <div class="card-header"> <h5> @lang('fleet.vehicle')  @lang('fleet.expenses') </h5></div>
               <div class="card-body">
-                <canvas id="canvas2" width="400" height="400"></canvas>
+                <canvas id="canvas2" width="400" height="130"></canvas>
               </div>
             </div>
           </div>
@@ -228,15 +228,15 @@ function random_color(i){
 }
 
         var chartData = {
-            labels: ["@lang('fleet.income')", "@lang('fleet.expense')"],
+            labels: ["@lang('fleet.expense')"],
 
             datasets: [{
-                type: 'pie',
+                type: 'line',
                 label: '',
                backgroundColor: ['#21bc6c','#ff5462'],
                 borderColor: window.chartColors.red,
                 borderWidth: 1,
-                data: [{{$income}},{{$expense}}]
+                data: [{{$expense}}]
             }]
         };
 
@@ -251,13 +251,7 @@ function random_color(i){
                     borderColor: '#ff5462',
                     data: [{{$yearly_expense}}],
                     fill: false,
-                }, {
-                    label: "@lang('fleet.income')",
-                    fill: false,
-                    backgroundColor: '#21bc6c',
-                    borderColor: '#21bc6c',
-                    data: [{{$yearly_income}}],
-                }]
+                },]
             },
             options: {
                 responsive: true,
@@ -304,13 +298,7 @@ function random_color(i){
                     borderColor: '#ff5462',
                     data: [{{$expenses1}}],
                     fill: false,
-                }, {
-                    label: "@lang('fleet.income')",
-                    fill: false,
-                    backgroundColor: '#21bc6c',
-                    borderColor: '#21bc6c',
-                    data: [{{$incomes}}],
-                }]
+                },]
             },
             options: {
                 responsive: true,
@@ -346,27 +334,30 @@ function random_color(i){
 
         window.onload = function() {
           var ctx = document.getElementById("yearly").getContext("2d");
-            window.myLine = new Chart(ctx, config);
-            var ctx = document.getElementById("canvas").getContext("2d");
-            var datewise = document.getElementById("datewise").getContext("2d");
-            window.myLine = new Chart(datewise, datewise_config);
-            window.myMixedChart = new Chart(ctx, {
-                type: 'pie',
-                data: chartData,
-                options: {
-                  legend:{display:false},
-                    responsive: true,
+          window.myLine = new Chart(ctx, config);
 
-                    tooltips: {
-                        mode: 'index',
-                        intersect: false
-                    }
-                }
-            });
+
+          var datewise = document.getElementById("datewise").getContext("2d");
+          window.myLine = new Chart(datewise, datewise_config);
+
+
+            // window.myMixedChart = new Chart(ctx, {
+            //     type: 'bar',
+            //     data: chartData,
+            //     options: {
+            //       legend:{display:false},
+            //         responsive: true,
+
+            //         tooltips: {
+            //             mode: 'index',
+            //             intersect: false
+            //         }
+            //     }
+            // });
 
             var ctx = document.getElementById("canvas2").getContext("2d");
             window.myMixedChart = new Chart(ctx, {
-                type: 'pie',
+                type: 'bar',
                 data: chartData3,
                 options: {
 
@@ -388,7 +379,7 @@ function random_color(i){
             var chartData3 = {
             labels: [@foreach($expenses as $exp) "{{$vehicle_name[$exp->vehicle_id]}}", @endforeach],
             datasets: [{
-                type: 'pie',
+                type: 'bar',
                 label: '',
                 backgroundColor: random_color({{count($expenses)}}),
                 borderColor: window.chartColors.black,

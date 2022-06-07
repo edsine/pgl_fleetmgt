@@ -271,8 +271,8 @@
           }, {
               label: "@lang('fleet.income')",
               fill: false,
-              backgroundColor: '#21bc6c',
-              borderColor: '#21bc6c',
+              backgroundColor: '#4e7e8f',
+              borderColor: '#4e7e8f',
               data: [{{$yearly_income}}],
           }]
       },

@@ -53,6 +53,7 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="<?php echo e(asset('assets/css/fonts/fonts.css')); ?>" rel="stylesheet">
   <link href="<?php echo e(asset('assets/css/pnotify.custom.min.css')); ?>" media="all" rel="stylesheet" type="text/css" />
+  <link href="<?php echo e(asset('assets/css/custom.css')); ?>" rel="stylesheet"/>
   <?php echo $__env->yieldContent("extra_css"); ?>
   <script>
   window.Laravel = <?php echo json_encode([
@@ -663,12 +664,12 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="<?php echo e(route('income.index')); ?>" class="nav-link <?php if((Request::is('admin/income'))|| (Request::is('admin/income_records'))): ?> active <?php endif; ?>">
                   <i class="fa fa-newspaper-o nav-icon"></i>
                   <p><?php echo app('translator')->get('fleet.manage_income'); ?></p>
                 </a>
-              </li>
+              </li> -->
               <li class="nav-item">
                 <a href="<?php echo e(route('expense.index')); ?>" class="nav-link <?php if((Request::is('admin/expense')) || (Request::is('admin/expense_records'))): ?> active <?php endif; ?>">
                   <i class="fa fa-newspaper-o nav-icon"></i>
@@ -678,7 +679,7 @@
             </ul>
           </li> <?php endif; ?>
 
-            <?php if((Request::is('admin/transactions*'))  || (Request::is('admin/bookings*'))  || (Request::is('admin/bookings_calendar')) || (Request::is('admin/booking-quotation*'))): ?>
+           <?php if((Request::is('admin/transactions*'))  || (Request::is('admin/bookings*'))  || (Request::is('admin/bookings_calendar')) || (Request::is('admin/booking-quotation*'))): ?>
             <?php ($class="menu-open"); ?>
             <?php ($active="active"); ?>
 
@@ -687,7 +688,7 @@
             <?php ($active=""); ?>
 
             <?php endif; ?>
-            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->any(['Bookings list','Bookings add','BookingQuotations list'])): ?>
+             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->any(['Bookings list','Bookings add','BookingQuotations list'])): ?>
           <li class="nav-item has-treeview <?php echo e($class); ?>">
             <a href="#" class="nav-link <?php echo e($active); ?>">
               <i class="nav-icon fa fa-address-card"></i>
@@ -763,24 +764,24 @@
             </a>
             <ul class="nav nav-treeview">
               
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="<?php echo e(url('admin/reports/income')); ?>" class="nav-link <?php if(Request::is('admin/reports/income')): ?> active <?php endif; ?>">
                   <i class="fa fa-credit-card nav-icon"></i>
                   <p> <?php echo app('translator')->get('fleet.income'); ?> <?php echo app('translator')->get('fleet.report'); ?></p>
                 </a>
-              </li>
+              </li> -->
               <li class="nav-item">
                 <a href="<?php echo e(url('admin/reports/expense')); ?>" class="nav-link <?php if(Request::is('admin/reports/expense')): ?> active <?php endif; ?>">
                   <i class="fa fa-money nav-icon"></i>
                   <p> <?php echo app('translator')->get('fleet.expense'); ?> <?php echo app('translator')->get('fleet.report'); ?></p>
                 </a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="<?php echo e(route('reports.delinquent')); ?>" class="nav-link <?php if(Request::is('admin/reports/delinquent')): ?> active <?php endif; ?>">
                   <i class="fa fa-file-text nav-icon"></i>
                   <p> <?php echo app('translator')->get('menu.deliquentReport'); ?></p>
                 </a>
-              </li>
+              </li> -->
               <li class="nav-item">
                 <a href="<?php echo e(route('reports.monthly')); ?>" class="nav-link <?php if(Request::is('admin/reports/monthly')): ?> active <?php endif; ?>">
                   <i class="fa fa-calendar nav-icon"></i>
@@ -788,19 +789,19 @@
                 </a>
               </li>
               
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="<?php echo e(route('reports.booking')); ?>" class="nav-link <?php if(Request::is('admin/reports/booking')): ?> active <?php endif; ?>">
                   <i class="fa fa-book nav-icon"></i>
                   <p><?php echo app('translator')->get('menu.bookingReport'); ?></p>
                 </a>
-              </li>
+              </li> -->
               
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="<?php echo e(route('reports.users')); ?>" class="nav-link <?php if(Request::is('admin/reports/users')): ?> active <?php endif; ?>">
                   <i class="fa fa-address-book nav-icon"></i>
                   <p><?php echo app('translator')->get('fleet.user_report'); ?></p>
                 </a>
-              </li>
+              </li> -->
               
               
               <li class="nav-item">
@@ -825,12 +826,12 @@
                   <p><?php echo app('translator')->get('fleet.driverReport'); ?></p>
                 </a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="<?php echo e(route('reports.customers')); ?>" class="nav-link <?php if(Request::is('admin/reports/customers')): ?> active <?php endif; ?>">
                   <i class="fa fa-users nav-icon"></i>
                   <p><?php echo app('translator')->get('fleet.customerReport'); ?></p>
                 </a>
-              </li>
+              </li> -->
               
               <li class="nav-item">
                 <a href="<?php echo e(route('reports.vendors')); ?>" class="nav-link <?php if(Request::is('admin/reports/vendors')): ?> active <?php endif; ?>">

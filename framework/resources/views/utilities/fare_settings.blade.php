@@ -6,7 +6,7 @@
 @section('extra_css')
 <style type="text/css">
 .custom .nav-link.active {
-    background-color: #21bc6c !important;
+    background-color: #4e7e8f !important;
 }
 </style>
 @endsection
