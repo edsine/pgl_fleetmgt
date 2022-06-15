@@ -38,9 +38,9 @@
                 <th style="width: 10% !important"><?php echo app('translator')->get('fleet.pickup'); ?></th>
                 <th style="width: 10% !important"><?php echo app('translator')->get('fleet.dropoff'); ?></th>
                 <th style="width: 10% !important"><?php echo app('translator')->get('fleet.passengers'); ?></th>
-                <th style="width: 10% !important"><?php echo app('translator')->get('fleet.payment_status'); ?></th>
+                <!-- <th style="width: 10% !important"><?php echo app('translator')->get('fleet.payment_status'); ?></th> -->
                 <th><?php echo app('translator')->get('fleet.booking_status'); ?></th>
-                <th style="width: 10% !important"><?php echo app('translator')->get('fleet.amount'); ?></th>
+                <!-- <th style="width: 10% !important"><?php echo app('translator')->get('fleet.amount'); ?></th> -->
                 <th style="width: 10% !important"><?php echo app('translator')->get('fleet.action'); ?></th>
               </tr>
             </thead>
@@ -72,7 +72,7 @@
                 <?php endif; ?>
                 </td>
                 <td style="width: 10% !important"><?php echo e($row->travellers); ?></td>
-                <td style="width: 10% !important">
+                <!-- <td style="width: 10% !important">
                 <?php if($row->payment == 1): ?>
                 <span class="text-success">
                 <?php echo app('translator')->get('fleet.paid1'); ?>
@@ -82,13 +82,13 @@
                 <?php echo app('translator')->get('fleet.pending'); ?>
                 </span>
                 <?php endif; ?>
-                </td>
+                </td> -->
                 <td><?php echo e($row->ride_status); ?></td>
-                <td style="width: 10% !important">
+                <!-- <td style="width: 10% !important">
                  <?php echo e(($row->tax_total) ? Hyvikk::get('currency')." ".$row->tax_total : ""); ?>
 
                 
-                </td>
+                </td> -->
                 <td style="width: 10% !important">
                 <div class="btn-group">
                   <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
@@ -171,9 +171,9 @@
                 <th><?php echo app('translator')->get('fleet.pickup'); ?></th>
                 <th><?php echo app('translator')->get('fleet.dropoff'); ?></th>
                 <th><?php echo app('translator')->get('fleet.passengers'); ?></th>
-                <th><?php echo app('translator')->get('fleet.payment_status'); ?></th>
+                <!-- <th><?php echo app('translator')->get('fleet.payment_status'); ?></th> -->
                 <th><?php echo app('translator')->get('fleet.booking_status'); ?></th>
-                <th><?php echo app('translator')->get('fleet.amount'); ?></th>
+                <!-- <th><?php echo app('translator')->get('fleet.amount'); ?></th> -->
                 <th><?php echo app('translator')->get('fleet.action'); ?></th>
               </tr>
             </tfoot>

@@ -28,6 +28,7 @@ class User extends Authenticatable
     use HasApiTokens;
     use HasRoles;
     use HasFactory;
+    protected $connection = 'mysql2'; // connect to ERP database
     protected $dates = ['deleted_at'];
     protected $table = "users";
     protected $metaTable = 'users_meta'; //optional.

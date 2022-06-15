@@ -400,44 +400,48 @@ class BookingsController extends Controller
     public function store(BookingRequest $request)
     {
 
-        $xx = $this->check_booking($request->get("pickup"), $request->get("dropoff"), $request->get("vehicle_id"));
-        if ($xx) {
-            $id = Bookings::create($request->all())->id;
-
-            Address::updateOrCreate(['customer_id' => $request->get('customer_id'), 'address' => $request->get('pickup_addr')]);
-
-            Address::updateOrCreate(['customer_id' => $request->get('customer_id'), 'address' => $request->get('dest_addr')]);
-
-            $booking = Bookings::find($id);
-            $booking->user_id = $request->get("user_id");
-            $booking->driver_id = $request->get('driver_id');
-            $dropoff = Carbon::parse($booking->dropoff);
-            $pickup = Carbon::parse($booking->pickup);
-            $diff = $pickup->diffInMinutes($dropoff);
-            $booking->note = $request->get('note');
-            $booking->duration = $diff;
-            $booking->udf = serialize($request->get('udf'));
-            $booking->accept_status = 1; //0=yet to accept, 1= accept
-            $booking->ride_status = "Upcoming";
-            $booking->booking_type = 1;
-            $booking->journey_date = date('d-m-Y', strtotime($booking->pickup));
-            $booking->journey_time = date('H:i:s', strtotime($booking->pickup));
-            $booking->save();
-            $mail = Bookings::find($id);
-            $this->booking_notification($booking->id);
-
-            // send sms to customer while adding new booking
-            $this->sms_notification($booking->id);
-
-            // browser notification
-            $this->push_notification($booking->id);
-            if (Hyvikk::email_msg('email') == 1) {
-                Mail::to($mail->customer->email)->send(new VehicleBooked($booking));
-                Mail::to($mail->driver->email)->send(new DriverBooked($booking));
+        try {
+            $xx = $this->check_booking($request->get("pickup"), $request->get("dropoff"), $request->get("vehicle_id"));
+            if ($xx) {
+                $id = Bookings::create($request->all())->id;
+    
+                Address::updateOrCreate(['customer_id' => $request->get('customer_id'), 'address' => $request->get('pickup_addr')]);
+    
+                Address::updateOrCreate(['customer_id' => $request->get('customer_id'), 'address' => $request->get('dest_addr')]);
+    
+                $booking = Bookings::find($id);
+                $booking->user_id = $request->get("user_id");
+                $booking->driver_id = $request->get('driver_id');
+                $dropoff = Carbon::parse($booking->dropoff);
+                $pickup = Carbon::parse($booking->pickup);
+                $diff = $pickup->diffInMinutes($dropoff);
+                $booking->note = $request->get('note');
+                $booking->duration = $diff;
+                $booking->udf = serialize($request->get('udf'));
+                $booking->accept_status = 1; //0=yet to accept, 1= accept
+                $booking->ride_status = "Upcoming";
+                $booking->booking_type = 1;
+                $booking->journey_date = date('d-m-Y', strtotime($booking->pickup));
+                $booking->journey_time = date('H:i:s', strtotime($booking->pickup));
+                $booking->save();
+                $mail = Bookings::find($id);
+                $this->booking_notification($booking->id);
+    
+                // send sms to customer while adding new booking
+                $this->sms_notification($booking->id);
+    
+                // browser notification
+                $this->push_notification($booking->id);
+                if (Hyvikk::email_msg('email') == 1) {
+                    Mail::to($mail->customer->email)->send(new VehicleBooked($booking));
+                    Mail::to($mail->driver->email)->send(new DriverBooked($booking));
+                }
+                return redirect()->route("bookings.index");
+            } else {
+                return redirect()->route("bookings.create")->withErrors(["error" => "Selected Vehicle is not Available in Given Timeframe"])->withInput();
             }
-            return redirect()->route("bookings.index");
-        } else {
-            return redirect()->route("bookings.create")->withErrors(["error" => "Selected Vehicle is not Available in Given Timeframe"])->withInput();
+        } catch (\Exception $th) {
+            return redirect()->route("bookings.create")->withErrors(["error" => $th->getMessage()])->withInput();
         }
     }
 

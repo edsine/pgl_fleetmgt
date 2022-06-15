@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class UserData extends Model
 {
+    protected $connection = 'mysql2';
     use SoftDeletes;
     protected $dates = ['deleted_at'];
     protected $table = "users_meta";

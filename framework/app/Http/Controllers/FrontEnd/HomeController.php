@@ -81,6 +81,7 @@ class HomeController extends Controller
 
     public function index()
     {
+        
         $data['testimonial'] = Testimonial::get();
         $data['vehicle'] = VehicleModel::get();
         $data['company_services'] = CompanyServicesModel::get();
@@ -121,9 +122,11 @@ class HomeController extends Controller
 
     public function user_login(Request $request)
     {
+       
         if (Login::attempt(['email' => $request->email, 'password' => $request->password])) {
             $user = Login::user();
-
+           // dd($user);
+           
             if ($user->user_type == "C") {
                 $user->login_status = 1;
                 $user->save();
@@ -173,7 +176,7 @@ class HomeController extends Controller
         if ($validator->fails()) {
             return back()->withErrors($validator, 'register')->withInput();
         }
-
+//dd($validator);
         $id = User::create([
             "name" => $request->first_name . " " . $request->last_name,
             "email" => $request->email,
@@ -187,7 +190,7 @@ class HomeController extends Controller
         $user->address = $request->address;
         $user->mobno = $request->phone;
         $user->gender = $request->gender;
-        $user->save();
+        //dd($user->save());
         // Mail::to($user->email)->send(new WelcomeEmail($user));
         // Mail::to($user->email)->send(new AccountDetails($user, $request->password));
         return back()->with('success', 'You are registered Successfully! please login here.');

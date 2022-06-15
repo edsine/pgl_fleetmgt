@@ -39,9 +39,9 @@
                 <th style="width: 10% !important">@lang('fleet.pickup')</th>
                 <th style="width: 10% !important">@lang('fleet.dropoff')</th>
                 <th style="width: 10% !important">@lang('fleet.passengers')</th>
-                <th style="width: 10% !important">@lang('fleet.payment_status')</th>
+                <!-- <th style="width: 10% !important">@lang('fleet.payment_status')</th> -->
                 <th>@lang('fleet.booking_status')</th>
-                <th style="width: 10% !important">@lang('fleet.amount')</th>
+                <!-- <th style="width: 10% !important">@lang('fleet.amount')</th> -->
                 <th style="width: 10% !important">@lang('fleet.action')</th>
               </tr>
             </thead>
@@ -70,7 +70,7 @@
                 @endif
                 </td>
                 <td style="width: 10% !important">{{$row->travellers}}</td>
-                <td style="width: 10% !important">
+                <!-- <td style="width: 10% !important">
                 @if($row->payment == 1)
                 <span class="text-success">
                 @lang('fleet.paid1')
@@ -80,12 +80,12 @@
                 @lang('fleet.pending')
                 </span>
                 @endif
-                </td>
+                </td> -->
                 <td>{{ $row->ride_status }}</td>
-                <td style="width: 10% !important">
+                <!-- <td style="width: 10% !important">
                  {{($row->tax_total) ? Hyvikk::get('currency')." ".$row->tax_total : ""}}
                 
-                </td>
+                </td> -->
                 <td style="width: 10% !important">
                 <div class="btn-group">
                   <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
@@ -165,9 +165,9 @@
                 <th>@lang('fleet.pickup')</th>
                 <th>@lang('fleet.dropoff')</th>
                 <th>@lang('fleet.passengers')</th>
-                <th>@lang('fleet.payment_status')</th>
+                <!-- <th>@lang('fleet.payment_status')</th> -->
                 <th>@lang('fleet.booking_status')</th>
-                <th>@lang('fleet.amount')</th>
+                <!-- <th>@lang('fleet.amount')</th> -->
                 <th>@lang('fleet.action')</th>
               </tr>
             </tfoot>

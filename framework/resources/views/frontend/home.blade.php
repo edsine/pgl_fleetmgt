@@ -15,7 +15,7 @@
                         <div class="hero-content--home w-100 text-center mt-4">
                             <h5 class="light primary">{{ Hyvikk::frontend('contact_phone') }}</h5>
                             <h1 class="mb-3">@lang('frontend.reliable_way')</h1>
-                            <a href="{{ route('frontend.home') }}"><button class="btn mx-auto form-submit-button">@lang('frontend.book_now')</button></a>
+                            <a href="#book_now"><button class="btn mx-auto form-submit-button">@lang('frontend.book_now')</button></a>
                         </div>
                     </div>
                 </div>
@@ -203,17 +203,17 @@
         </section>
         <!-- Ends vehicles section -->
         <!-- Services section -->
-        <section class="my-5 relative">
+        <!-- <section class="my-5 relative"> -->
             <!-- Section title -->
-            <div class="container my-5">
+            <!-- <div class="container my-5">
                 <div class="row">
                     <div class="col-sm-12">
                         <h2 class="text-center">@lang('frontend.our_service')</h2>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- Ends Section title -->
-            <div class="container my-0 my-lg-5">
+            <!-- <div class="container my-0 my-lg-5">
                 <div class="row js-service-slider">
                     @foreach($company_services as $service)
                     <div class="col-sm-6 py-5 ">
@@ -235,31 +235,31 @@
                     </div>
                     @endforeach
                 </div>
-            </div>
+            </div> -->
             <!-- Slider arrows -->
-            <div class="service-slide-prev">
+            <!-- <div class="service-slide-prev">
                 <img src="{{ asset('assets/frontend/icons/fleet-arrow-left.png')}}" alt="">
             </div>
             <div class="service-slide-next">
                 <img src="{{ asset('assets/frontend/icons/fleet-arrow-right.png')}}" alt="">
             </div>
-        </section>
+        </section> -->
         <!-- Ends services section -->
         <!-- Testimonial section -->
-        <section class="pb-5 pt-0">
-            <div class="container text-center no-padding-mobile relative">
+        <!-- <section class="pb-5 pt-0">
+            <div class="container text-center no-padding-mobile relative"> -->
                 <!-- Section title -->
-                <div class="container">
+                <!-- <div class="container">
                     <div class="row">
                         <div class="col-sm-12">
                             <h2 class="text-center">@lang('frontend.testimonials')</h2>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- Ends Section title -->
-                <div class="js-testimonial-slider">
+                <!-- <div class="js-testimonial-slider"> -->
                     <!-- Slide -->
-                    @foreach($testimonial as $t)
+                    <!-- @foreach($testimonial as $t)
                     <div class="col-sm-12">
                         <div class="row mt-5">
                             <div class="col-lg-4 flex-col-center">
@@ -284,14 +284,14 @@
                             </div>
                         </div>
                     </div>
-                    @endforeach
+                    @endforeach -->
                     <!-- Slide -->
                     <!-- Slides end -->
-                </div>
+                <!-- </div>
                 <div class="testimonial-dots mx-auto">
                 </div>
             </div>
-        </section>
+        </section> -->
         <!-- Ends wrapper  -->
 @endsection
 

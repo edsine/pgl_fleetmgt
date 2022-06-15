@@ -27,7 +27,7 @@ return [
 	'partTransaction' => 'Part Transaction',
 	'bookings' => 'Bookings',
 	'newbooking' => 'New Booking',
-	'manage_customers' => 'Manage Customers',
+	'manage_customers' => 'Manage Staffs',
 	'manage_bookings' => 'Manage Bookings',
 	'reports' => 'Reports',
 	'deliquentReport' => 'Delinquent Report',
