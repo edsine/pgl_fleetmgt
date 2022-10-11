@@ -1,8 +1,8 @@
 <?php
 
-require __DIR__ . '/framework/bootstrap/autoload.php';
+require __DIR__ . '/bootstrap/autoload.php';
 
-$app = require_once __DIR__ . '/framework/bootstrap/app.php';
+$app = require_once __DIR__ . '/bootstrap/app.php';
 $kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
 
 $response = $kernel->handle(
